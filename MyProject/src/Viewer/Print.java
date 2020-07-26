@@ -166,8 +166,9 @@ public class Print extends JFrame {
 				String Address = address.getText().toString();
 				int Cops = Integer.parseInt(cops.getSelectedItem().toString());
 				int Vehicle = Integer.parseInt(vehicle.getSelectedItem().toString());
+				String status = lblStatus.getText().toString();
 
-				AE.AddRE(Urgency, Area, Address, Cops, Vehicle);
+				AE.AddRE(Urgency, Area, Address, Cops, Vehicle, status);
 
 			}
 		});

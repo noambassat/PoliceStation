@@ -16,8 +16,8 @@ public class AddEvent implements Serializable {
 		return true;
 	}
 	
-	public boolean AddRE(int urgency, int area, String address, int Cops, int Vehicles){
-		ReadyEvent RE = new ReadyEvent(urgency,address, area);
+	public boolean AddRE(int urgency, int area, String address, int Cops, int Vehicles, String status){
+		ReadyEvent RE = new ReadyEvent(urgency,address, area, status);
 		RE.setNumberOfCops(Cops);
 		RE.setNumberOfVehicles(Vehicles);
 		return true;

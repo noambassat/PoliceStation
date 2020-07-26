@@ -54,9 +54,9 @@ public class InformationSystem implements Serializable {
 		Vehicle V = new Vehicle(123, "mazda", 5);
 		EventHandler EH = new EventHandler("kobi", "11", 11);
 		CrimeEvent CE = new CrimeEvent(2, "afula", 3);
-		ReadyEvent RE = new ReadyEvent(1, "Holon", 1);
-		ReadyEvent RE1 = new ReadyEvent(3, "haifa", 2);
-		ReadyEvent RE2 = new ReadyEvent(4, "Tel Aviv", 2);
+		ReadyEvent RE = new ReadyEvent(1, "Holon", 1, "");
+		ReadyEvent RE1 = new ReadyEvent(3, "haifa", 2,"");
+		ReadyEvent RE2 = new ReadyEvent(4, "Tel Aviv", 2,"");
 		RE1.setActive(false);
 		RE1.setStatus("Handeled");
 	}
@@ -70,6 +70,7 @@ public class InformationSystem implements Serializable {
 		if (str == "CrimeEvent")
 			return (Set<T>) CrimeEventSet;
 		if (str == "ReadyEvent"){
+			
 			CheckHandeled();
 			return (Set<T>) ReadyEventSet;
 		}
@@ -81,10 +82,9 @@ public class InformationSystem implements Serializable {
 		}
 		return null;
 	}
-	public void CheckHandeled(){
+	private void CheckHandeled(){
 		for(Iterator<ReadyEvent> it = ReadyEventSet.iterator(); it.hasNext();){
 			ReadyEvent RE = it.next();
-			
 			if (RE.getStatus().equals("Handeled")){
 				HandeledReadyEventSet.add(RE);
 				ReadyEventSet.remove(RE);

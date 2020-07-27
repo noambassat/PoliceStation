@@ -1,6 +1,8 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 public class ReadyEvent extends CrimeEvent implements Serializable {
@@ -35,8 +37,19 @@ public class ReadyEvent extends CrimeEvent implements Serializable {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	//	if(status.equals("Handeled"))
-	//		IS.CheckHandeled(this);
+		if(status.equals("Handeled")){
+			int i = 0;
+			boolean remove = false;
+			Set<ReadyEvent> ReadyEventSet = IS.getSet("ReadyEvent");
+			for(Iterator<ReadyEvent> it = ReadyEventSet.iterator(); it.hasNext();){
+				if (it.equals(this)){
+					remove = true;
+					break;
+				}
+				i++;
+			}
+			if(remove) IS.RemoveIFromSet(i, "ReadyEvent");
+		}
 	}
 	public int getNumberOfCops() {
 		return numberOfCops;

@@ -1,6 +1,5 @@
 package Model;
 import java.io.Serializable;
-import java.util.Scanner;
 import Controler.InformationSystem;
 
 

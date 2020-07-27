@@ -3,7 +3,7 @@ import java.io.Serializable;
 
 
 import Controler.InformationSystem;
-
+//dsd
 
 public class Worker implements Serializable{
 	protected static final long serialVersionUID = 1L;
@@ -32,7 +32,7 @@ public class Worker implements Serializable{
 		return true;
 	}
 	public boolean checkId(Long id){
-		if(id>999999999||id<1) return false;
+		if(id>9999999||id<1) return false;
 		return true;
 	}
 

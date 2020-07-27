@@ -19,7 +19,6 @@ public class Main {
 	private JTextField txtWelcomToPolice;
 	private InformationSystem IS;
 
-
 	/**
 	 * Launch the application.
 	 */

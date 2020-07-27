@@ -1,6 +1,8 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.Vector;
 
 public class ReadyEvent extends CrimeEvent implements Serializable {
@@ -19,8 +21,9 @@ public class ReadyEvent extends CrimeEvent implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	protected ReadyEvent(){}
-	public ReadyEvent(int urgencyLevel, String address, int area){
+	public ReadyEvent(int urgencyLevel, String address, int area, String status){
 		super(urgencyLevel, address, area);
+		this.status = status;
 		this.SerialNumber = ++REcounter;
 		eventUploaded(this);
 	}
@@ -34,6 +37,19 @@ public class ReadyEvent extends CrimeEvent implements Serializable {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+		if(status.equals("Handeled")){
+			int i = 0;
+			boolean remove = false;
+			Set<ReadyEvent> ReadyEventSet = IS.getSet("ReadyEvent");
+			for(Iterator<ReadyEvent> it = ReadyEventSet.iterator(); it.hasNext();){
+				if (it.equals(this)){
+					remove = true;
+					break;
+				}
+				i++;
+			}
+			if(remove) IS.RemoveIFromSet(i, "ReadyEvent");
+		}
 	}
 	public int getNumberOfCops() {
 		return numberOfCops;
@@ -82,17 +98,14 @@ public class ReadyEvent extends CrimeEvent implements Serializable {
 		return result;
 	}
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
+	public boolean equals(Object other) {
+		if (this.distance != ((ReadyEvent)other).distance)
 			return false;
-		if (getClass() != obj.getClass())
+		if (this.Area != ((ReadyEvent)other).Area)
 			return false;
-		ReadyEvent other = (ReadyEvent) obj;
-		if (SerialNumber != other.SerialNumber)
+		if (this.Arrival != ((ReadyEvent)other).Arrival)
 			return false;
-		if (distance != other.distance)
+		if(!this.Address.equals(((ReadyEvent)other).Address))
 			return false;
 		return true;
 	}

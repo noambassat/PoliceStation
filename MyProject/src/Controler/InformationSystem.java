@@ -58,7 +58,7 @@ public class InformationSystem implements Serializable {
 		ReadyEvent RE1 = new ReadyEvent(3, "haifa", 2,"");
 		ReadyEvent RE2 = new ReadyEvent(4, "Tel Aviv", 2,"");
 		RE1.setActive(false);
-		RE1.setStatus("Handeled");
+		RE1.setStatus("Handeled",RE1);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -327,7 +327,7 @@ public class InformationSystem implements Serializable {
 				Object O = it.next();
 				if (i==index){
 					ReadyEventSet.remove((ReadyEvent)O);
-					((ReadyEvent) O).setStatus("Done");
+					((ReadyEvent) O).setStatus("Handeled",(ReadyEvent) O);
 					HandeledReadyEventSet.add((ReadyEvent)O);
 					
 					break;
@@ -357,5 +357,16 @@ public class InformationSystem implements Serializable {
 		return true;
 	}
 
+
+	public void RemoveREFromSet(ReadyEvent rE) {
+		for(Iterator<ReadyEvent> it = ReadyEventSet.iterator(); it.hasNext();){
+			 ReadyEvent Handeled = it.next();
+			 if(rE.equals(Handeled)){
+				 ReadyEventSet.remove(Handeled);
+				 break;
+			 }
+		
+		}
+	}
 
 }

@@ -167,7 +167,7 @@ public class Print extends JFrame {
 				int Cops = Integer.parseInt(cops.getSelectedItem().toString());
 				int Vehicle = Integer.parseInt(vehicle.getSelectedItem().toString());
 
-				AE.AddRE(Urgency, Area, Address, Cops, Vehicle);
+				AE.AddRE(Urgency, Area, Address, Cops, Vehicle,"");
 
 			}
 		});

@@ -35,20 +35,10 @@ public class ReadyEvent extends CrimeEvent implements Serializable {
 	public String getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(String status, ReadyEvent RE) {
 		this.status = status;
 		if(status.equals("Handeled")){
-			int i = 0;
-			boolean remove = false;
-			Set<ReadyEvent> ReadyEventSet = IS.getSet("ReadyEvent");
-			for(Iterator<ReadyEvent> it = ReadyEventSet.iterator(); it.hasNext();){
-				if (it.equals(this)){
-					remove = true;
-					break;
-				}
-				i++;
-			}
-			if(remove) IS.RemoveIFromSet(i, "ReadyEvent");
+			 IS.RemoveREFromSet(RE);
 		}
 	}
 	public int getNumberOfCops() {

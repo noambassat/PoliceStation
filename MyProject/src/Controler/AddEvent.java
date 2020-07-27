@@ -20,6 +20,7 @@ public class AddEvent implements Serializable {
 		ReadyEvent RE = new ReadyEvent(urgency,address, area, status);
 		RE.setNumberOfCops(Cops);
 		RE.setNumberOfVehicles(Vehicles);
+		RE.setStatus(status, RE);
 		return true;
 	}
 }

@@ -21,7 +21,6 @@ public class Register extends JFrame {
 	private JTextField NameField;
 	private JTextField IDField;
 	private JPasswordField passwordField;
-	private SignNewWorker SW;
 	private JLabel idTaken;
 
 	public static void main(String[] args) {
